@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1618835331 source:c:\users\sombr\desktop\progra\99 programacion clases 1-c2021\clases lenguaje c\clase 3 - vectores\vectores.c
+	<stdio.h>
+	"vectores.h"
+
+1618834187 c:\users\sombr\desktop\progra\99 programacion clases 1-c2021\clases lenguaje c\clase 3 - vectores\vectores.h
+	<stdio.h>
+	<stdlib.h>
+
+1618835092 source:c:\users\sombr\desktop\progra\99 programacion clases 1-c2021\clases lenguaje c\clase 3 - vectores\main.c
+	<math.h>
+	<time.h>
+	"vectores.h"
+
+1618835331 source:c:\users\sombr\desktop\progra\99 programacion clases 1-c2021\clases lenguaje c\clase 4 - vectores\vectores.c
+	<stdio.h>
+	"vectores.h"
+
+1618834187 c:\users\sombr\desktop\progra\99 programacion clases 1-c2021\clases lenguaje c\clase 4 - vectores\vectores.h
+	<stdio.h>
+	<stdlib.h>
+
