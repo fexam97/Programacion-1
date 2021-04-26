@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1619470533 source:c:\users\sombr\desktop\progra\1 vectores\funcion_itoa\main.c
+	<stdio.h>
+	<stdlib.h>
+
