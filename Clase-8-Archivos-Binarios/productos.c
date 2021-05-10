@@ -16,17 +16,14 @@ int generarArchivo(const char* nombre)
         {"DAMASCO",     "Damasco",      40.7, 120}
     };
 
-    FILE* archF = fopen(nombre, "wb");
+    FILE* archF = fopen("Productos.dat", "wb");
 
     if(!archF) /// archF == NULL
-    {
-        puts("No se pudo abrir el archivo");
         return ERR_ARCHIVO;
-    }
 
     /// el problema de los archivos binario no se puede editar con el block de notas
 
-    /// no se les ocurra abrir un bloc de notas un archivo binario
+    /// NO abrir un bloc de notas un archivo binario
 
 
     fwrite(vecProd, sizeof(producto), CANT_REG, archF); //grabar
@@ -37,7 +34,6 @@ int generarArchivo(const char* nombre)
 
 }
 
-// minuto 1:34:45 tengo que averiguar como grabar y leer un archivo binario
 
 void mostrarProd(const producto* prod)
 {
