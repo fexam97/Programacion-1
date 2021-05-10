@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1620263763 source:c:\users\sombr\desktop\progra\3 archivos\introduccion\main.c
+	"productos.h"
+
+1620101278 c:\users\sombr\desktop\progra\3 archivos\introduccion\productos.h
+	<stdio.h>
+	<stdlib.h>
+
+1620263763 source:c:\users\sombr\desktop\progra\3 archivos\introduccion\productos.c
+	"productos.h"
+
