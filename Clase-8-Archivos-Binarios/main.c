@@ -5,8 +5,7 @@ y no con     FILE* prodF = fopen(nombre, "rb"); *******************************/
 #include "productos.h"
 
 /// Archivos.exe Productos.dat
-
-int main(int argc, char* argv[])        // argc: argumento cuenta ( no lo usó)
+int main(int argc, char* argv[])        // argc: argumento cuenta
                                         // argv[]: vector de argumento
 
 {
@@ -17,27 +16,13 @@ int main(int argc, char* argv[])        // argc: argumento cuenta ( no lo usó)
     }
 
 
-    producto prod;
-
-    FILE* prodF = fopen("Productos.dat", "rb");
-
-    if(!prodF)
+    if(LeerArchivo(argv[ARG_NOM_ARCH]) == ERR_ARCHIVO) // argv[1] == 1
     {
-        puts("No se pudo abrir el archivo");
+        puts("No se pudo leer el archivo");
         return ERR_ARCHIVO;
     }
-
-    fread(&prod, sizeof(producto), 1, prodF);
-
-    while(!feof(prodF))
-    {
-        mostrarProd(&prod);
-        fread(&prod, sizeof(producto), 1 , prodF);
-    }
-
-    fclose(prodF);
-
 
 
     return 0;
 }
+
