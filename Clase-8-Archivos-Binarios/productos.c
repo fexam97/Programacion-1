@@ -42,10 +42,7 @@ int LeerArchivo(const char* nombre)  // al estilo elementos
     FILE* prodF = fopen("Productos.dat", "rb");
 
     if(!prodF)
-    {
-        puts("No se pudo abrir el archivo");
         return ERR_ARCHIVO;
-    }
 
     fread(&prod, sizeof(producto), 1, prodF);
 
@@ -56,6 +53,8 @@ int LeerArchivo(const char* nombre)  // al estilo elementos
     }
 
     fclose(prodF);
+
+    return TODO_OK;
 }
 
 
@@ -63,3 +62,30 @@ void mostrarProd(const producto* prod)
 {
     printf("%-15s\t%-15s\t%07.2f\t%04d\n", prod->codigo, prod->descripcion, prod->precio, prod->cant);
 }
+
+
+int actualizarPrecioProductos(const char* nombre, float porcentaje) // 10% de aumento
+{
+    producto prod;
+
+    FILE* prodF = fopen("Productos.dat", "r+b");
+
+    if(!prodF)
+        return ERR_ARCHIVO;
+
+    fread(&prod, sizeof(producto), 1, prodF);
+
+    while(!feof(prodF))
+    {
+        prod.precio *= 1 + porcentaje / 100;
+        fseek(prodF, -sizeof(producto), SEEK_CUR); // tira warning
+        fwrite(&prod, sizeof(producto), 1 , prodF);
+        fseek(prodF,0L, SEEK_CUR);
+        fread(&prod, sizeof(producto), 1 , prodF);
+    }
+
+    fclose(prodF);
+
+    return TODO_OK;
+}
+
