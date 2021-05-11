@@ -16,6 +16,7 @@ int generarArchivo(const char* nombre)
         {"DAMASCO",     "Damasco",      40.7, 120}
     };
 
+
     FILE* archF = fopen("Productos.dat", "wb");
 
     if(!archF) /// archF == NULL
@@ -34,8 +35,31 @@ int generarArchivo(const char* nombre)
 
 }
 
+int LeerArchivo(const char* nombre)  // al estilo elementos
+{
+    producto prod;
+
+    FILE* prodF = fopen("Productos.dat", "rb");
+
+    if(!prodF)
+    {
+        puts("No se pudo abrir el archivo");
+        return ERR_ARCHIVO;
+    }
+
+    fread(&prod, sizeof(producto), 1, prodF);
+
+    while(!feof(prodF))
+    {
+        mostrarProd(&prod);
+        fread(&prod, sizeof(producto), 1 , prodF);
+    }
+
+    fclose(prodF);
+}
+
 
 void mostrarProd(const producto* prod)
 {
-    printf("%s\t %s\t %f\t %d\n", prod->codigo, prod->descripcion, prod->precio, prod->cant);
+    printf("%-15s\t%-15s\t%07.2f\t%04d\n", prod->codigo, prod->descripcion, prod->precio, prod->cant);
 }
