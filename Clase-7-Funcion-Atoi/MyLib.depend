@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1619705236 source:c:\users\ger\documents\programacion1110\mylib\main.c
+	<stdio.h>
+	<stdlib.h>
+	"std_lib.h"
+	"s_tring.h"
+
+1619701933 c:\users\ger\documents\programacion1110\mylib\std_lib.h
+
+1619702002 source:c:\users\ger\documents\programacion1110\mylib\std_lib.c
+	<stdio.h>
+	"std_lib.h"
+
+1619704306 source:c:\users\ger\documents\programacion1110\mylib\s_tring.c
+	<stdio.h>
+
+1619704375 c:\users\ger\documents\programacion1110\mylib\s_tring.h
+
+1619705548 source:c:\users\sombr\desktop\progra\0 string cadenas de caracteres\mylib\main.c
+	<stdio.h>
+	<stdlib.h>
+	"std_lib.h"
+	"s_tring.h"
+
+1619701933 c:\users\sombr\desktop\progra\0 string cadenas de caracteres\mylib\std_lib.h
+
+1619704375 c:\users\sombr\desktop\progra\0 string cadenas de caracteres\mylib\s_tring.h
+
