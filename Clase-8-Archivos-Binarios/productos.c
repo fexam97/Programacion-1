@@ -16,17 +16,15 @@ int generarArchivo(const char* nombre)
         {"DAMASCO",     "Damasco",      40.7, 120}
     };
 
-    FILE* archF = fopen(nombre, "wb");
+
+    FILE* archF = fopen("Productos.dat", "wb");
 
     if(!archF) /// archF == NULL
-    {
-        puts("No se pudo abrir el archivo");
         return ERR_ARCHIVO;
-    }
 
     /// el problema de los archivos binario no se puede editar con el block de notas
 
-    /// no se les ocurra abrir un bloc de notas un archivo binario
+    /// NO abrir un bloc de notas un archivo binario
 
 
     fwrite(vecProd, sizeof(producto), CANT_REG, archF); //grabar
@@ -37,9 +35,57 @@ int generarArchivo(const char* nombre)
 
 }
 
-// minuto 1:34:45 tengo que averiguar como grabar y leer un archivo binario
+int LeerArchivo(const char* nombre)  // al estilo elementos
+{
+    producto prod;
+
+    FILE* prodF = fopen("Productos.dat", "rb");
+
+    if(!prodF)
+        return ERR_ARCHIVO;
+
+    fread(&prod, sizeof(producto), 1, prodF);
+
+    while(!feof(prodF))
+    {
+        mostrarProd(&prod);
+        fread(&prod, sizeof(producto), 1 , prodF);
+    }
+
+    fclose(prodF);
+
+    return TODO_OK;
+}
+
 
 void mostrarProd(const producto* prod)
 {
-    printf("%s\t %s\t %f\t %d\n", prod->codigo, prod->descripcion, prod->precio, prod->cant);
+    printf("%-15s\t%-15s\t%07.2f\t%04d\n", prod->codigo, prod->descripcion, prod->precio, prod->cant);
 }
+
+
+int actualizarPrecioProductos(const char* nombre, float porcentaje) // 10% de aumento
+{
+    producto prod;
+
+    FILE* prodF = fopen("Productos.dat", "r+b");
+
+    if(!prodF)
+        return ERR_ARCHIVO;
+
+    fread(&prod, sizeof(producto), 1, prodF);
+
+    while(!feof(prodF))
+    {
+        prod.precio *= 1 + porcentaje / 100;
+        fseek(prodF, -sizeof(producto), SEEK_CUR); // tira warning
+        fwrite(&prod, sizeof(producto), 1 , prodF);
+        fseek(prodF,0L, SEEK_CUR);
+        fread(&prod, sizeof(producto), 1 , prodF);
+    }
+
+    fclose(prodF);
+
+    return TODO_OK;
+}
+
